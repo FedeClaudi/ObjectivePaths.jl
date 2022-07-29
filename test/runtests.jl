@@ -1,4 +1,5 @@
 using ObjectivePaths
+using Test
 
 
 @testset "Folder" begin
