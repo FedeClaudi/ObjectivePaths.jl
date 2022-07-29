@@ -15,7 +15,12 @@ makedocs(;
     sitename = "ObjectivePaths.jl",
     format = Documenter.HTML(;
         prettyurls = get(ENV, "CI", "false") == "true",
+        canonical = "https://FedeClaudi.github.io/ObjectivePaths.jl",
         assets = String[],
+        collapselevel = 1,
     ),
+    strict=false,
     pages = ["Home" => "index.md"],
 )
+
+deploydocs(; repo = "github.com/FedeClaudi/ObjectivePaths.jl")
