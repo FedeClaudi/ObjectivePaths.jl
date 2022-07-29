@@ -6,11 +6,8 @@ function Base.:-(path::AbstractPath, val::Int)
         @warn "Cannot go $(val) steps up from $(path.path)"
         return nothing
     end
-    return Folder(joinpath(parts[1:length(parts)-val]))
+    return Folder(joinpath(parts[1:(length(parts) - val)]))
 end
-
-
-
 
 # ---------------------------------- joining --------------------------------- #
 Base.:/(p1::AbstractPath, p2::AbstractPath) = path(joinpath(p1.path, p2.path))

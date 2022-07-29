@@ -8,7 +8,6 @@ struct File <: AbstractPath
     path::String
 end
 
-
 function path(p::String)
     # if it doesn't point to an existing path, infer folder/file from name
     if ispath(p)
@@ -57,7 +56,6 @@ end
 
 Base.show(io::IO, ::MIME"text/plain", p::AbstractPath) = print(io, p)
 
-
 # ------------------------------- Base methods ------------------------------- #
 Base.splitpath(p::AbstractPath) = splitpath(p.path)
 Base.isfile(f::Folder) = false
@@ -80,8 +78,6 @@ Base.mv(source::AbstractPath, dest::String; kwargs...) = mv(source.path, dest; k
 Base.rm(p::AbstractPath; kwargs...) = rm(p.path; kwargs...)
 Base.readdir(f::Folder; kwargs...) = readdir(f.path; kwargs...)
 
-
-
 # ---------------------------------------------------------------------------- #
 #                                     info                                     #
 # ---------------------------------------------------------------------------- #
@@ -99,7 +95,6 @@ function info(f::Folder)
     else
         # ----------------------------------- tree ----------------------------------- #
         folder_tree = "" / tree(f.path)
-
 
         # ----------------------------------- table ---------------------------------- #
         properties = ["exists", "# files"]
@@ -119,7 +114,6 @@ function info(f::Folder)
             title = "properties",
             title_style = "default bright_blue",
         )
-
 
         content = Panel(
             cvstack(path, (folder_tree * Spacer(folder_tree.measure.h, 5) * tb); pad = 1);

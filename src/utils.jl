@@ -4,11 +4,9 @@
 exists(path::AbstractPath) = ispath(path.path)
 exists(path::String) = ispath(path)
 
-
 nfiles(f::Folder) = exists(f) ? length(readdir(f.path)) : nothing
 nfiles(f::String) = isdir(f) ? length(readdir(f)) : nothing
 nfiles(f::File) = nothing
-
 
 # ---------------------------------------------------------------------------- #
 #                                   contents                                   #
@@ -18,7 +16,6 @@ files(f::Folder)::Vector{File} =
 subdirs(f::Folder)::Vector{Folder} =
     exists(f) ? path.(filter(isdir, readdir(f; join = true))) : []
 
-
 # ---------------------------------------------------------------------------- #
 #                                    visuals                                   #
 # ---------------------------------------------------------------------------- #
@@ -27,7 +24,6 @@ function highlight_path(path::String)
     parts[end] = "{bold white}$(parts[end]){/bold white}"
     join(parts, "{bright_blue} > {/bright_blue}")
 end
-
 
 """
   get_file_format(nbytes; suffix="B")
@@ -40,7 +36,6 @@ function get_file_format(nbytes::Int; suffix = "B")
     end
 end
 
-
 # ---------------------------------------------------------------------------- #
 #                                 FOLDERS TREE                                 #
 # ---------------------------------------------------------------------------- #
@@ -52,14 +47,13 @@ op_theme = Theme(
 )
 set_theme(op_theme)
 
-
 function _tree(dir::String)::OrderedDict
     tree_data = OrderedDict{String,Any}("files" => [])
     for item in readdir(dir)
         startswith(item, '.') && continue
         path = joinpath(dir, item)
         if isdir(path)
-            tree_data["📁 "*item] = _tree(path)
+            tree_data["📁 " * item] = _tree(path)
         else
             item, ext = splitext(item)
             ext = "{bold dim}$ext{bold dim}"

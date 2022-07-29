@@ -1,7 +1,6 @@
 using ObjectivePaths
 using Test
 
-
 @testset "Folder" begin
     fld = pwd()
     @info "Test - folder: $fld"
@@ -13,7 +12,6 @@ using Test
 
     @test parent(fold) == base(fold)
     @test parent(fold) == fold - 1
-
 
     # test a non existing folder
     ne = fold / "asafisufhsndfnssfnais"
