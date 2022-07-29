@@ -1,0 +1,17 @@
+name = "ObjectivePaths"
+uuid = "f54fc8bb-b7bf-4bdb-b2c8-0a06351fc134"
+authors = ["FedeClaudi <federicoclaudi@protonmail.com> and contributors"]
+version = "0.1.0"
+
+[deps]
+OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+Term = "22787eb5-b846-44ae-b979-8e399b8463ab"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
