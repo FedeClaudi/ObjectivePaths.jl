@@ -62,16 +62,16 @@ Base.isdir(f::Folder) = true
 Base.isdir(f::File) = false
 Base.dirname(p::AbstractPath) = dirname(p.path)
 Base.splitext(p::AbstractPath) = splitext(p.path)
-Base.mkdir(f::Folder, kwargs...) = mkdir(f.path, kwargs...)
-Base.mkpath(f::Folder, kwargs...) = mkpath(f.path, kwargs...)
-Base.cp(source::AbstractPath, dest::AbstractPath, kwargs...) = cp(source.path, dest.path, kwargs...)
-Base.cp(source::String, dest::AbstractPath, kwargs...) = cp(source, dest.path, kwargs...)
-Base.cp(source::AbstractPath, dest::String, kwargs...) = cp(source.path, dest, kwargs...)
-Base.mv(source::AbstractPath, dest::AbstractPath, kwargs...) = mv(source.path, dest.path, kwargs...)
-Base.mv(source::String, dest::AbstractPath, kwargs...) = mv(source, dest.path, kwargs...)
-Base.mv(source::AbstractPath, dest::String, kwargs...) = mv(source.path, dest, kwargs...)
-Base.rm(p::AbstractPath, kwargs...) = rm(p.path, kwargs...)
-
+Base.mkdir(f::Folder; kwargs...) = mkdir(f.path; kwargs...)
+Base.mkpath(f::Folder; kwargs...) = mkpath(f.path; kwargs...)
+Base.cp(source::AbstractPath, dest::AbstractPath; kwargs...) = cp(source.path, dest.path; kwargs...)
+Base.cp(source::String, dest::AbstractPath; kwargs...) = cp(source, dest.path; kwargs...)
+Base.cp(source::AbstractPath, dest::String; kwargs...) = cp(source.path, dest; kwargs...)
+Base.mv(source::AbstractPath, dest::AbstractPath; kwargs...) = mv(source.path, dest.path; kwargs...)
+Base.mv(source::String, dest::AbstractPath; kwargs...) = mv(source, dest.path; kwargs...)
+Base.mv(source::AbstractPath, dest::String; kwargs...) = mv(source.path, dest; kwargs...)
+Base.rm(p::AbstractPath; kwargs...) = rm(p.path; kwargs...)
+Base.readdir(f::Folder; kwargs...) = readdir(f.path; kwargs...)
 
 
 

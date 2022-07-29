@@ -16,5 +16,6 @@ const is_win = Sys.iswindows()
 
 export Folder, File, path, info, tree
 export name, exists, nfiles, base
+export files, subdirs
 
 end

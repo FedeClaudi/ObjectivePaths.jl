@@ -10,6 +10,12 @@ nfiles(f::String) = isdir(f) ? length(readdir(f)) : nothing
 nfiles(f::File) = nothing
 
 
+# ---------------------------------------------------------------------------- #
+#                                   contents                                   #
+# ---------------------------------------------------------------------------- #
+files(f::Folder)::Vector{File} = exists(f) ? path.(filter(isfile, readdir(f; join=true))) : []
+subdirs(f::Folder)::Vector{Folder} = exists(f) ? path.(filter(isdir, readdir(f; join=true))) : []
+
 
 # ---------------------------------------------------------------------------- #
 #                                    visuals                                   #
