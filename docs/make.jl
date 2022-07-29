@@ -20,7 +20,7 @@ makedocs(;
         collapselevel = 1,
     ),
     strict=false,
-    pages = ["Home" => "index.md"],
+    pages = ["Home" => "index.md", "library"=>"library.md"],
 )
 
 deploydocs(; repo = "github.com/FedeClaudi/ObjectivePaths.jl")

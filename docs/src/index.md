@@ -8,8 +8,8 @@ ObjectivePaths is a small Julia library aiming to make a few operations around h
 ## AbstractPath, Folder & File
 The first thing you need is to craete pointers to paths (folders/files). This is done by calling the `path` function on a string with a filepath:
 
-```example op
-import ObjectivePath: path
+``` @example op
+using ObjectivePaths
 
 current_folder = pwd()  # path to current folder
 path(current_folder)    # create a Folder type
@@ -18,15 +18,15 @@ path(current_folder)    # create a Folder type
 As you can see, calling `path` on a string pointing to a file create a `Folder` type. If, instead, you are using a file:
 
 
-```example op
-using ObjectivePath
-
-afile = readdir(current_folder; join=true)[1]  # get first file in current path(afile)
+``` @example op
+parent_content = readdir(parent(path(current_folder)); join=true) # get content of parent folder
+files_paths = filter(isfile, parent_content)                     # get only files
+path(files_paths[1])  # pointer to a file
 ```
 
 this creates a `File`. These are the two subtypes of `AbstractPath`. There's a few methods for `AbstractPath`s which can make your life easier, starting from printing nicely formatted info as shown above. But you can do more
 
-```example op
+``` @example op
 fld = path(current_folder)  # Folder object
 
 exists(fld) |> print  # true if folder exists
@@ -40,12 +40,12 @@ split(fld) |> print   # split path into base/name
 ### Folder-specific methods
 With `Folder` objects you can do a few more, starting from viewing more info (or use `tree` to just print out the folder structure):
 
-```example op
+``` @example op
 info(fld)
 ```
 
 Or get the files/subfolders in your folder
-```example op
+``` @example op
 println("Subfolders in folder:")
 subdirs(fld) |> print
 
@@ -58,7 +58,7 @@ files(parent(fld)) |> print  # parent goes up one level
 One of the things that can be a bit annoying is manipulating paths. Normally, you'd create a `String` with the path you need, or you combine things like `splitpath` and `joinpath` to create a path. Not fun. 
 We can make things a bit easier.
 
-```example op
+``` @example op
 # say you want to get access to a folder 2 levels up the current one
 fld - 2  # done
 ```
@@ -66,7 +66,7 @@ fld - 2  # done
 Yep, that's it.
 But what if you want to create a new folder in there? Need to split, join paths or something? Nope
     
-```example op
+``` @example op
 
 newfld = (fld - 2) / "new_folder_that_doesnt_exist_yet"  # point to new folder
 
