@@ -77,3 +77,7 @@ and then you can use `mkdir` or `mkpath` as you would normally, neat.
 
 ## Coda
 That's it for now. But if you have issues, or questions or ideas for new improvements, get in touch on Github!
+
+Also, please consider supporting my work if you find it valuable!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C5E36Z2)
