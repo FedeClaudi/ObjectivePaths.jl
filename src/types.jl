@@ -98,7 +98,6 @@ function info(f::Folder)
         )
     else
         # ----------------------------------- tree ----------------------------------- #
-
         folder_tree = "" / tree(f.path)
 
 

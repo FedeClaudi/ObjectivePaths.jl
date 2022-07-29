@@ -6,9 +6,7 @@ f = path("/Users/federicoclaudi/Documents/Github/ObjectivePaths/src")
 f2 = path("/Users/federicoclaudi/Documents/Github/ObjectivePaths/nonexist")
 p = path("src/types.jl")
 
-# TODO test
-# TODO docs
-# TODO format
+# TODO docstrings
 # TODO release
 
 # f / p
