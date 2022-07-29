@@ -9,7 +9,7 @@ using Test
     @test typeof(fold) == Folder
     @test exists(fold) == true
     @test name(fold) == splitpath(fld)[end]
-    
+
     @test parent(fold) == base(fold)
     @test parent(fold) == fold - 1
 
@@ -26,7 +26,7 @@ end
     @test typeof(fls) == Vector{File}
     @test nfiles(fld) == length(fls)
 
-    subs = subdirs(fld-1)
+    subs = subdirs(fld - 1)
     @test typeof(subs) == Vector{Folder}
 end
 
@@ -43,7 +43,7 @@ end
     @test exists(fl) == true
 end
 
-@testset "File print" begin 
+@testset "File print" begin
     fl = files(path(pwd()))[1]
     print(fl)
 end

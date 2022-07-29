@@ -13,8 +13,10 @@ nfiles(f::File) = nothing
 # ---------------------------------------------------------------------------- #
 #                                   contents                                   #
 # ---------------------------------------------------------------------------- #
-files(f::Folder)::Vector{File} = exists(f) ? path.(filter(isfile, readdir(f; join=true))) : []
-subdirs(f::Folder)::Vector{Folder} = exists(f) ? path.(filter(isdir, readdir(f; join=true))) : []
+files(f::Folder)::Vector{File} =
+    exists(f) ? path.(filter(isfile, readdir(f; join = true))) : []
+subdirs(f::Folder)::Vector{Folder} =
+    exists(f) ? path.(filter(isdir, readdir(f; join = true))) : []
 
 
 # ---------------------------------------------------------------------------- #
@@ -45,33 +47,35 @@ end
 op_theme = Theme(
     tree_title_style = "bold white",
     tree_node_style = "bold blue",
-    tree_guide_style="dim #6488f5",
-    tree_max_width=240,
+    tree_guide_style = "dim #6488f5",
+    tree_max_width = 240,
 )
 set_theme(op_theme)
 
 
 function _tree(dir::String)::OrderedDict
-    tree_data = OrderedDict{String, Any}( 
-        "files" => [],
-    )
+    tree_data = OrderedDict{String,Any}("files" => [])
     for item in readdir(dir)
         startswith(item, '.') && continue
         path = joinpath(dir, item)
         if isdir(path)
-            tree_data["📁 " * item] =  _tree(path)
+            tree_data["📁 "*item] = _tree(path)
         else
             item, ext = splitext(item)
             ext = "{bold dim}$ext{bold dim}"
-            length(tree_data["files"]) < 20 && push!(tree_data["files"], nothing=> "{white}$(item)$(ext){/white}")
-            length(tree_data["files"]) == 20 && push!(tree_data["files"], nothing=> "{white} ... files omitted ... {/white}")
+            length(tree_data["files"]) < 20 &&
+                push!(tree_data["files"], nothing => "{white}$(item)$(ext){/white}")
+            length(tree_data["files"]) == 20 && push!(
+                tree_data["files"],
+                nothing => "{white} ... files omitted ... {/white}",
+            )
         end
     end
     tree_data
 end
 
-function tree(dir::String)::Tree 
-    return Tree(_tree(dir); title="{bright_blue}$(name(dir)){bright_blue}")
+function tree(dir::String)::Tree
+    return Tree(_tree(dir); title = "{bright_blue}$(name(dir)){bright_blue}")
 end
 
 tree(f::Folder) = tree(f.path)
