@@ -1,13 +1,28 @@
 abstract type AbstractPath end
 
+"""
+    Folder
+
+Stores the path to a (possibly not-existing) folder
+"""
 struct Folder <: AbstractPath
     path::String
 end
 
+"""
+    File
+
+Stores the path to a (possibly not-existing) file
+"""
 struct File <: AbstractPath
     path::String
 end
 
+"""
+    path(p::String)
+
+Create a `Folder` or a `File` type from a string with a path.
+"""
 function path(p::String)
     # if it doesn't point to an existing path, infer folder/file from name
     if ispath(p)
@@ -30,6 +45,13 @@ end
 
 title(f::Folder) = "📁 folder:"
 title(f::File) = "📄 file:"
+
+"""
+    repr_info
+
+Create a compact textual representation of an AbstractPath
+"""
+function repr_info end
 
 function repr_info(p::Folder)
     _exists = exists(p) ? "{bold green}✔{/bold green}" : "{dim red}✖{/dim red}"
@@ -81,6 +103,12 @@ Base.readdir(f::Folder; kwargs...) = readdir(f.path; kwargs...)
 # ---------------------------------------------------------------------------- #
 #                                     info                                     #
 # ---------------------------------------------------------------------------- #
+
+"""
+    info(f::Folder)
+    
+Create a detailed visualization of a folder's content
+"""
 function info(f::Folder)
     path =
         RenderableText(title(f) * highlight_path(f.path) * "{italic}"; style = "bold white")
