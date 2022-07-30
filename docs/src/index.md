@@ -5,6 +5,13 @@ CurrentModule = ObjectivePaths
 # ObjectivePaths
 ObjectivePaths is a small Julia library aiming to make a few operations around handling paths to folders and files easier. It's a small wrapper around Base's [file system](https://docs.julialang.org/en/v1/base/file/) applying some ideas from Python's [pathlib](https://docs.python.org/3/library/pathlib.html) library, in a Julian way.
 
+
+Installation:
+```Julia
+] add ObjectivePaths
+```
+
+
 ## AbstractPath, Folder & File
 The first thing you need is to craete pointers to paths (folders/files). This is done by calling the `path` function on a string with a filepath:
 
