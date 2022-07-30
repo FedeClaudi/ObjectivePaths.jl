@@ -22,6 +22,8 @@ current_folder = pwd()  # path to current folder
 path(current_folder)    # create a Folder type
 ```
 
+(note: the display in the REPR will look a bit different in your terminal - give it a go by copy-pasting the code above and running it in the REPL).
+
 As you can see, calling `path` on a string pointing to a file create a `Folder` type. If, instead, you are using a file:
 
 
@@ -35,27 +37,30 @@ this creates a `File`. These are the two subtypes of `AbstractPath`. There's a f
 
 ``` @example op
 fld = path(current_folder)  # Folder object
+println(fld)
 
-exists(fld) |> print  # true if folder exists
-nfiles(fld) |> print  # number of files in folder
-name(fld) |> print    # name of folder (last part of the path)
+exists(fld) |> println  # true if folder exists
+nfiles(fld) |> println  # number of files in folder
+name(fld) |> println    # name of folder (last part of the path)
 
 # also mose Base methods are available for AbstractPaths
-split(fld) |> print   # split path into base/name
+split(fld) |> println   # split path into base/name
 ```
 
 ### Folder-specific methods
 With `Folder` objects you can do a few more, starting from viewing more info (or use `tree` to just print out the folder structure):
 
 ``` @example op
-info(fld)
+info(fld - 1)  # -1 moves us one level up the hierarchy
 ```
 
 Or get the files/subfolders in your folder
 ``` @example op
 println("Subfolders in folder:")
-subdirs(fld) |> print
+subdirs(fld-1) |> print
+```
 
+```@example op
 println("Files in folder's parent:")
 files(parent(fld)) |> print  # parent goes up one level
 ```
@@ -66,8 +71,8 @@ One of the things that can be a bit annoying is manipulating paths. Normally, yo
 We can make things a bit easier.
 
 ``` @example op
-# say you want to get access to a folder 2 levels up the current one
-fld - 2  # done
+# say you want to get access to a folder 3 levels up the current one
+fld - 3  # done
 ```
 
 Yep, that's it.
@@ -75,7 +80,7 @@ But what if you want to create a new folder in there? Need to split, join paths 
     
 ``` @example op
 
-newfld = (fld - 2) / "new_folder_that_doesnt_exist_yet"  # point to new folder
+newfld = (fld - 3) / "new_folder_that_doesnt_exist_yet"  # point to new folder
 
 ```
 
