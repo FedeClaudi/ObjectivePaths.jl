@@ -19,8 +19,8 @@ makedocs(;
         assets = String[],
         collapselevel = 1,
     ),
-    strict=false,
-    pages = ["Home" => "index.md", "library"=>"library.md"],
+    strict = false,
+    pages = ["Home" => "index.md", "library" => "library.md"],
 )
 
 deploydocs(; repo = "github.com/FedeClaudi/ObjectivePaths.jl")

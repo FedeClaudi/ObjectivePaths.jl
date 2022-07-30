@@ -9,7 +9,6 @@ Check if an object exists at the target path
 exists(path::AbstractPath) = ispath(path.path)
 exists(path::String) = ispath(path)
 
-
 """
     nfiles(f::Folder)
 
