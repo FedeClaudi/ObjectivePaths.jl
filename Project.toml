@@ -1,7 +1,7 @@
 name = "ObjectivePaths"
 uuid = "f54fc8bb-b7bf-4bdb-b2c8-0a06351fc134"
 authors = ["FedeClaudi <federicoclaudi@protonmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
