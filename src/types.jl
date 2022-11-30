@@ -141,12 +141,15 @@ function info(f::Folder)
             style = "dim",
             title = "properties",
             title_style = "default bright_blue",
+            fit=false,
+            width=30
         )
 
         content = Panel(
             cvstack(path, (folder_tree * Spacer(folder_tree.measure.h, 5) * tb); pad = 1);
             padding = (5, 5, 1, 1),
             style = "dim blue",
+            fit=true
         )
     end
     print(content)
