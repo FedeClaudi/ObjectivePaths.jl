@@ -66,10 +66,15 @@ end
 #                                 FOLDERS TREE                                 #
 # ---------------------------------------------------------------------------- #
 op_theme = Theme(
+    tree_max_leaf_width = 240,
+    tree_mid = "dim #6488f5",
+    tree_terminator = "dim #6488f5",
+    tree_skip = "dim #6488f5",
+    tree_dash = "dim #6488f5",
+    tree_trunc = "dim #6488f5",
+    tree_pair = "bold blue",
+    tree_keys = "bold blue",
     tree_title = "bold white",
-    tree_node = "bold blue",
-    tree_guide = "dim #6488f5",
-    tree_max_width = 240,
 )
 set_theme(op_theme)
 
